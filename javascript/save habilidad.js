@@ -16,7 +16,7 @@ function crear() {
   const fueA = document.getElementById("FueMant").value;
   const podA = document.getElementById("PodMant").value;
   const volA = document.getElementById("VolMant").value;
-  var nombre = document.getElementById("hab");
+  var nombre = document.getElementById("hab").value;
   let descripcion = document.getElementById("descripcion").value;
   var lista = document.getElementById("list");
   if (nombre === "") {
