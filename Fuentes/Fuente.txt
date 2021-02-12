@@ -1,0 +1,65 @@
+Para instalar las fuentes:
+Inicio -> Panel de control -> Fuentes -> Archivo - > Instalar
+
+CAPÍTULOS
+Fuente: Morpheus (Mayúscula)
+Color: Blanco con relieve exterior azul
+Tamaño: 18
+
+TÍTULO DEL CAPÍTULO
+Fuente: Morpheus (Tipo texto)
+Color: Azul
+Tamaño: 25
+Alineado: Centrado
+
+CITA
+Fuente: Mistral (Tipo texto)
+Color: Negro
+Tamaño: 24
+Alineado: Izquierda
+
+APARTADO
+Fuente: Morpheus (Tipo texto)
+Color: Azul
+Tamaño: 18
+Alineado: Centrado
+
+SUB-APARTADO
+Fuente: Resaiss - Italic (Tipo texto)
+Color: Rojo
+Tamaño: 14
+Alineado: Centrado
+
+PUNTO
+Fuente: Verdana (Mayúscula)
+Color: Azul
+Tamaño: 7
+Alineado: Justificado
+Sangría: 15 pt
+
+TEXTO
+Fuente: Verdana (Tipo texto)
+Color: Negra
+Tamaño: 7
+Alineado: Justificado
+Sangría: 15 pt
+
+EJEMPLO
+Fuente: Comic Sans MS (Tipo texto)
+Color: Azul
+Tamaño: 7
+Alineado: Justificado
+Sangría: 15 pt
+
+NOMBRE DE TABLA
+Fuente: Trajan Pro(Tipo texto)
+Color: Rojo
+Tamaño: 12
+Alineado: Justificado
+Sangría: 15 pt
+
+TEXTO DE PIÉ DE IMAGEN
+Fuente: Comic Sans MS (Tipo texto)
+Color: Azul
+Tamaño: 6
+Alineado: Centrada

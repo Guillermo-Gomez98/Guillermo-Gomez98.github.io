@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+  <link rel="shortcut icon" href="imagen/imagen.png" />
+  <script src="https://kit.fontawesome.com/f0ce234415.js" crossorigin="anonymous"></script>
+  <title>Anima</title>
+  <link rel="stylesheet" type="text/css" href="css/estilos.css" />
+</head>
+
+<body class ="SiBarraLateral" onclick='KiTotal()'>
+  <div class="title">
+    <h1 class="ml-2">Anima beyond ki</h1>
+  </div>
+  <!--tabla informativa-->
+  <div class="t">
+    <table class="table table-condensed ">
+      <tr class="tablita">
+        <th class="td">sel.</th>
+        <th>atribute</th>
+        <th>ki</th>
+        <th>Acc</th>
+        <th>Actual</th>
+      </tr>
+      <tr id="imputmayorcero1" class="deg1">
+        <td class="check">
+          <div class="form-check">
+            <input onclick="check('agi')" class="form-check-input position-static" type="checkbox" id="AGI"
+              value="option1" aria-label="..." />
+          </div>
+        </td>
+        <td>AGI.</td>
+        <td>
+          <input id="agiKI" class="sinborde trans" type="number" value="5" step="1" min="1" size="2" />
+        </td>
+        <td>
+          <span>x</span>
+          <input id="agiAcc" class="sinborde trans" type="number" value="1" step="1" min="1" />
+        </td>
+        <td id="agiT">0</td>
+      </tr>
+      <tbody>
+        <tr class="deg2">
+          <td class="check">
+            <div class="form-check">
+              <input onclick="check('con')" class="form-check-input position-static" type="checkbox" id="CON"
+                value="option1" aria-label="..." />
+            </div>
+          </td>
+          <td>CON.</td>
+          <td>
+            <input id="conKI" class="sinborde trans" type="number" value="5" step="1" min="1" />
+          </td>
+          <td>
+            <span>x</span>
+            <input id="conAcc" class="sinborde trans" type="number" value="1" step="1" min="1" />
+          </td>
+          <td id="conT">0</td>
+        </tr>
+      </tbody>
+      <tr class="deg1">
+        <td class="check">
+          <div class="form-check">
+            <input onclick="check('des')" class="form-check-input position-static" type="checkbox" id="DES"
+              value="option1" aria-label="..." />
+          </div>
+        </td>
+        <td>DES.</td>
+        <td>
+          <input id="desKI" class="sinborde trans" type="number" value="5" step="1" min="1" />
+        </td>
+        <td>
+          <span>x</span>
+          <input id="desAcc" class="sinborde trans" type="number" value="1" step="1" min="1" />
+        </td>
+        <td id="desT">0</td>
+      </tr>
+      <tr class="deg2">
+        <td class="check">
+          <div class="form-check">
+            <input onclick="check('fue')" class="form-check-input position-static" type="checkbox" id="FUE"
+              value="option1" aria-label="..." />
+          </div>
+        </td>
+        <td>FUE.</td>
+        <td>
+          <input id="fueKI" class="sinborde trans" type="number" value="5" step="1" min="1" />
+        </td>
+        <td>
+          <span>x</span>
+          <input id="fueAcc" class="sinborde trans" type="number" value="1" step="1" min="1" size="15" maxlength="30" />
+        </td>
+        <td id="fueT">0</td>
+      </tr>
+      <tr class="deg1">
+        <td class="check">
+          <div class="form-check">
+            <input onclick="check('pod')" class="form-check-input position-static" type="checkbox" id="POD"
+              value="option1" aria-label="..." />
+          </div>
+        </td>
+        <td>POD.</td>
+        <td>
+          <input id="podKI" class="sinborde trans" type="number" value="5" step="1" min="1" />
+        </td>
+        <td>
+          <span>x</span>
+          <input id="podAcc" class="sinborde trans" type="number" value="1" step="1" min="1" />
+        </td>
+        <td id="podT">0</td>
+      </tr>
+      <tr class="deg2">
+        <td class="check">
+          <div class="form-check">
+            <input onclick="check('vol')" class="form-check-input position-static" type="checkbox" id="VOL"
+              value="option1" aria-label="..." />
+          </div>
+        </td>
+        <td>VOL.</td>
+        <td>
+          <input id="volKI" class="sinborde trans" type="number" value="5" step="1" min="1" />
+        </td>
+        <td>
+          <span>x</span>
+          <input id="volAcc" class="sinborde trans" type="number" value="1" step="1" min="1" />
+        </td>
+        <td id="volT">0</td>
+      </tr>
+      <tr class="deg1">
+        <td></td>
+        <td>TOTAL</td>
+        <td id="TOTALKI">0</td>
+        <td>-</td>
+        <td id="KiUtilizado">0</td>
+      </tr>
+    </table>
+    <row class="row  form-inline">
+      <col class="col-lg-1 ">
+        <h5 class="ml-3">Turnos</h5>
+    </col>
+      <col class="col-12 align">
+        <row class="form-inline mr-0 ">
+          <col class="col-1 align">
+          <a onclick="sumarTurno(-1)" class="text-info">
+            <i class="fas fa-caret-left tam mr-3 ml-3"></i>
+          </a>
+          </col>
+          <col class="col-1 center-block">
+          <h5 id="turno">0</h5>
+          </col>
+          <col class="col-1 ">
+          <a onclick="sumarTurno(1)" class="text-info ">
+            <i class="fas fa-caret-right tam ml-3"></i>
+          </a>
+          </col>
+          <col class="col-10 align">
+        <a type="button" onclick="sumarTurno(0)" class="text-info ml-4">
+          <i class="fas fa-recycle"></i>
+        </a>
+      </col>
+      <col>
+      <a type="checkbox" onclick="AccionActiva()" class="active ml-2" id="AccionActiva"*> Accion activa </a>
+    </col>
+        </row>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pl-3 pr-3">
+    <!--lista con hab.-->
+    <div class="col">
+      <div class="title e1">
+        <h1 class="form-inline">
+          habilidades
+          <div class="col">
+            <!-- Button trigger modal -->
+            <a type="button" class=" text-info icon" data-toggle="modal" data-target="#exampleModal">
+              <i class="fas fa-plus-square ml-1"></i>
+            </a>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Creacion de habilidades</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="m">
+                      <div class="form-inline">
+                        <h2>Nombre:</h2>
+                        <input type="text" class="form-control" id="hab" aria-describedby="emailHelp"
+                          placeholder="Nombre" size="50">
+                      </div>
+                      <div class="form-inline">
+                        <h4>Descripcion:</h4>
+                        <textarea class="form-control" id="descripcion" placeholder="descripcion (opcional)" cols="100"></textarea>
+                      </div>
+                      <table class="table table-responsive imputmayorcero1">
+                        <tr>
+                          <td></td>
+                          <td>Ki</td>
+                          <td>Mant.</td>
+                        </tr>
+                        <tr>
+                          <td>AGI.</td>
+                          <td>
+                            <input id="Agi" type="number" value="0" step="1" min="0" />
+                          </td>
+                          <td>
+                            <input id="AgiMant" type="number" value="0" step="1" min="0" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>CON.</td>
+                          <td>
+                            <input id="Con" type="number" value="0" step="1" min="0" />
+                          </td>
+                          <td>
+                            <input id="ConMant" type="number" value="0" step="1" min="0" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>DES.</td>
+                          <td>
+                            <input id="Des" type="number" value="0" step="1" min="0" />
+                          </td>
+                          <td>
+                            <input id="DesMant" type="number" value="0" step="1" min="0" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>FUE.</td>
+                          <td>
+                            <input id="Fue" type="number" value="0" step="1" min="0" />
+                          </td>
+                          <td>
+                            <input id="FueMant" type="number" value="0" step="1" min="0" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>POD.</td>
+                          <td>
+                            <input id="Pod" type="number" value="0" step="1" min="0" />
+                          </td>
+                          <td>
+                            <input id="PodMant" type="number" value="0" step="1" min="0" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>VOL.</td>
+                          <td>
+                            <input id="Vol" type="number" value="0" step="1" min="0" />
+                          </td>
+                          <td>
+                            <input id="VolMant" type="number" value="0" step="1" min="0" />
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                      Close
+                    </button>
+                    <button onclick="crear()" type="button" data-dismiss="modal" class="btn btn-primary">Save
+                      changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </h1>
+      </div>
+      <div class="scroll">
+        <div id=list>
+
+        </div>
+      </div>
+    </div>
+    <!--columna derecha (rigth column)-->
+  </div>
+  </div>
+  </div>
+  <script src="javascript/cuentas tabla superior.js"></script>
+  <script src="javascript/accion activa.js"></script>
+  <script src="javascript/check de atributos.js"></script>
+  <script src="javascript/total de ki.js"></script>
+  <script src="javascript/save habilidad.js"></script>
+  <script src="javascript/Opciones de las habilidades.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
