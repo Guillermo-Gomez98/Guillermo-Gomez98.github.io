@@ -110,11 +110,9 @@ function Reverse(t) {
     let TMantenimiento = document.getElementById("TurnoHab" + cantidadCreada)
     if(TMantenimiento != null){
       for(let i=1 ; i<=cantidadCreada ; i++){
-        console.log("entra",checkMantenimiento,i)
         let TMantenimiento = document.getElementById("TurnoHab" + i)
         if(checkMantenimiento[i] == true){
         TMantenimiento.innerText = 0;
-        console.log("sñlqfjrnwvibreivwuefhwrekuignfw")
         }
       }
     }
@@ -165,10 +163,7 @@ function Guardado (t, Mantenimiento, AcumulacionNecesaria, i) {
   TurnoPod[t.innerText] = TotalKiPod.innerText
 
   TurnoVol[t.innerText] = TotalKiVol.innerText
-  //guardar en arreglo
   KiUtilizado[+t.innerText + 1] = +KiUtilizado[t.innerText]
-  //console.log(KiUtilizado , t)
   if(checkMantenimiento[i] == true) KiUtilizado[t.innerText] = KiUtilizado[t.innerText] + +Mantenimiento.innerText;
   if(checkActivar[i] == true ) KiUtilizado[t.innerText] = KiUtilizado[t.innerText] + +AcumulacionNecesaria.innerText;
-  //console.log(KiUtilizado)
 }

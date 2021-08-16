@@ -26,7 +26,6 @@ function SumaTMantener (n, cantidadCreada){
 }
 
 function MantenerCuentas(z,t,n) {
-  console.log(checkMantenimiento)
   let totalKi = document.querySelector("#KiUtilizado")
   let AcumulacionTabla = document.getElementById(z + "T");
   for(let i=1 ; i<=cantidadCreada ; i++){
@@ -50,11 +49,9 @@ deberia colocar una exepcion para turnos mayores a 0*/
           Guardado (t, Mantenimiento, AcumulacionNecesaria, i)
         }
       }
-      console.log(AcumulacionTabla.innerText - +Mantenimiento.innerText)
       if(AcumulacionTabla.innerText - +Mantenimiento.innerText < 0){
         let TMantenimiento = document.getElementById("TurnoHab" + i)
         TMantenimiento = (+TMantenimiento.innerHTML + n)*0
-        console.log(TMantenimiento)
         checkMantenimiento[i] = false
       }
     }
