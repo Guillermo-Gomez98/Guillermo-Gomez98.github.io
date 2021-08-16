@@ -1,0 +1,3 @@
+cuentas tablas superior funcion sumarturno ---> verifique los check y si da acumulacion superior denegar el paso de turno
+
+agregar boton de acumulacion

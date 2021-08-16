@@ -10,8 +10,12 @@
 </head>
 
 <body class ="SiBarraLateral" onclick='KiTotal()'>
-  <div class="title">
-    <h1 class="ml-2">Anima beyond ki</h1>
+  <div class="title row">
+    <a class="iconWhite ml-2">
+      <i class="fas fa-bars align tam2">  </i>
+    </a>
+    <h1 class="col-10">Anima beyond ki</h1>
+    <a class="far fa-times-circle right iconWhite" onclick="Delet()"></a>
   </div>
   <!--tabla informativa-->
   <div class="t">
@@ -131,7 +135,7 @@
         <td></td>
         <td>TOTAL</td>
         <td id="TOTALKI">0</td>
-        <td>-</td>
+        <td>UTILIZADO=</td>
         <td id="KiUtilizado">0</td>
       </tr>
     </table>
@@ -139,11 +143,11 @@
       <col class="col-lg-1 ">
         <h5 class="ml-3">Turnos</h5>
     </col>
-      <col class="col-12 align">
+    <col class="col-12 align">
         <row class="form-inline mr-0 ">
           <col class="col-1 align">
           <a onclick="sumarTurno(-1)" class="text-info">
-            <i class="fas fa-caret-left tam mr-3 ml-3"></i>
+            <i class="fas fa-undo-alt tam mr-3 ml-3"></i>
           </a>
           </col>
           <col class="col-1 center-block">
@@ -154,16 +158,16 @@
             <i class="fas fa-caret-right tam ml-3"></i>
           </a>
           </col>
-          <col class="col-10 align">
-        <a type="button" onclick="sumarTurno(0)" class="text-info ml-4">
-          <i class="fas fa-recycle"></i>
-        </a>
-      </col>
       <col>
       <a type="checkbox" onclick="AccionActiva()" class="active ml-2" id="AccionActiva"*> Accion activa </a>
-    </col>
+      </col>
+      <col class="col-10 align">
+<a type="button" onclick="Reserva0()" class="text-info ml-4">
+  <i class="fas fa-recycle"></i>
+</a>
+</col>
         </row>
-      </div>
+      </col>
     </div>
   </div>
 
@@ -305,3 +309,16 @@
 </body>
 
 </html>
+
+
+
+
+
+<!--
+////el boton de borrado de turnos (rehubicar)
+<col class="col-10 align">
+<a type="button" onclick="sumarTurno(0)" class="text-info ml-4">
+  <i class="fas fa-recycle"></i>
+</a>
+</col>
+-->

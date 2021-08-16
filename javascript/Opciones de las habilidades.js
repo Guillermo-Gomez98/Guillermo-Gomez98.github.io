@@ -1,101 +1,86 @@
 function eliminar(cantidadCreada) {
-    var Nombre = document.getElementById('habilidad'+cantidadCreada);
-    let nuevoParrafo = `
+  var Nombre = document.getElementById('habilidad' + cantidadCreada);
+  let nuevoParrafo = `
     <div id=list>
     </div>
 `;
 
   Nombre.outerHTML = nuevoParrafo;
-  console.log (Nombre)
 }
 
-function Activara(cantidadCreada) {
-  //valores guardados de las habilidades
-  let agiC = document.getElementById('agiC'+cantidadCreada);
-  let conC = document.getElementById('conC'+cantidadCreada);
-  let desC = document.getElementById('desC'+cantidadCreada);
-  let fueC = document.getElementById('fueC'+cantidadCreada);
-  let podC = document.getElementById('podC'+cantidadCreada);
-  let volC = document.getElementById('volC'+cantidadCreada);
-// llamo valores en la tabla
-  let AgiTabla = document.getElementById("agiT");
-  let ConTabla = document.getElementById("conT");
-  let DesTabla = document.getElementById("desT");
-  let FueTabla = document.getElementById("fueT");
-  let PodTabla = document.getElementById("podT");
-  let VolTabla = document.getElementById("volT");
-//Se realiza la operacion
-  AgiTabla.innerText= +AgiTabla.innerText - agiC.innerText
-  ConTabla.innerText= +ConTabla.innerText - conC.innerText
-  DesTabla.innerText= +DesTabla.innerText - desC.innerText
-  FueTabla.innerText= +FueTabla.innerText - fueC.innerText
-  PodTabla.innerText= +PodTabla.innerText - podC.innerText
-  VolTabla.innerText= +VolTabla.innerText - volC.innerText
-
+function SumaTMantener (n, cantidadCreada){
+  let TMantenimiento = document.getElementById("TurnoHab" + cantidadCreada)
+  if(TMantenimiento != null){
+    if(TMantenimiento.innerText>=0){
+      for(let i=1 ; i<=cantidadCreada ; i++){
+        console.log(checkMantenimiento[i],i)
+        let TMantenimiento = document.getElementById("TurnoHab" + i)
+        if(checkMantenimiento[i] == true){
+          TMantenimiento.innerText= +TMantenimiento.innerText +n
+        }
+        if(checkMantenimiento[i] == false){
+          TMantenimiento.innerText= 0}
+      }
+    }
+  }
 }
 
-function Activar(cantidadCreada){
-  EfectoActivar(cantidadCreada,"agi");
-  EfectoActivar(cantidadCreada,"con");
-  EfectoActivar(cantidadCreada,"des");
-  EfectoActivar(cantidadCreada,"fue");
-  EfectoActivar(cantidadCreada,"pod");
-  EfectoActivar(cantidadCreada,"vol");
-}
-
-function EfectoActivar(cantidadCreada,z) {
-  let AcumulacionNecesaria = document.getElementById(z+'C'+cantidadCreada);
-  let Mantenimiento =  document.getElementById(z + 'A'+cantidadCreada);
+function MantenerCuentas(z,t,n) {
+  console.log(checkMantenimiento)
+  let totalKi = document.querySelector("#KiUtilizado")
   let AcumulacionTabla = document.getElementById(z + "T");
-
-  if(AcumulacionTabla.innerText - +AcumulacionNecesaria.innerText - +Mantenimiento.innerText > 0){
-    AcumulacionTabla.innerText = AcumulacionTabla.innerText - +AcumulacionNecesaria.innerText - +Mantenimiento.innerText
-  // Por si hay error o cualquier cosa Function Reverse.
-  let turnoUtilizado= document.getElementById("turno").innerText;
-  if (z == "agi") {
-    TurnoAgi[turnoUtilizado - 1] = TurnoAgi[turnoUtilizado - 1] - +AcumulacionNecesaria.innerText - +Mantenimiento.innerText
+  for(let i=1 ; i<=cantidadCreada ; i++){
+    if (checkMantenimiento[i] == true) {
+      let AcumulacionNecesaria = document.getElementById(z + 'C' + i);
+      let Mantenimiento = document.getElementById(z + 'A' + i);
+/*como tengo que calcular si o si el total de la suma entre el mantenimiento de la tecnica
+y la acumulacion especifica del turno (que es la primera en activarse por obvias razones)
+deberia colocar una exepcion para turnos mayores a 0*/
+      if (checkActivar[i] == true ) {
+        if (AcumulacionTabla.innerText - +AcumulacionNecesaria.innerText - +Mantenimiento.innerText >= 0) {
+            totalKi.innerHTML = +totalKi.innerHTML + +Mantenimiento.innerText
+            AcumulacionTabla.innerText = AcumulacionTabla.innerText - +Mantenimiento.innerText
+            Guardado (t, Mantenimiento, AcumulacionNecesaria, i)
+        }
+      }
+      else{
+        if (AcumulacionTabla.innerText - +Mantenimiento.innerText >= 0) {
+          totalKi.innerHTML = +totalKi.innerHTML + +Mantenimiento.innerText
+          AcumulacionTabla.innerText = AcumulacionTabla.innerText - +Mantenimiento.innerText
+          Guardado (t, Mantenimiento, AcumulacionNecesaria, i)
+        }
+      }
+      console.log(AcumulacionTabla.innerText - +Mantenimiento.innerText)
+      if(AcumulacionTabla.innerText - +Mantenimiento.innerText < 0){
+        let TMantenimiento = document.getElementById("TurnoHab" + i)
+        TMantenimiento = (+TMantenimiento.innerHTML + n)*0
+        console.log(TMantenimiento)
+        checkMantenimiento[i] = false
+      }
+    }
   }
-  if (z == "con") {
-    TurnoCon[turnoUtilizado - 1] = TurnoCon[turnoUtilizado - 1] - +AcumulacionNecesaria.innerText - +Mantenimiento.innerText
-  }
-  if (z == "des") {
-    TurnoDes[turnoUtilizado - 1] = TurnoDes[turnoUtilizado - 1] - +AcumulacionNecesaria.innerText - +Mantenimiento.innerText
-  }
-  if (z == "fue") {
-    TurnoFue[turnoUtilizado - 1] = TurnoFue[turnoUtilizado - 1] - +AcumulacionNecesaria.innerText - +Mantenimiento.innerText
-  }
-  if (z == "pod") {
-    TurnoPod[turnoUtilizado - 1] = TurnoPod[turnoUtilizado - 1] - +AcumulacionNecesaria.innerText - +Mantenimiento.innerText
-  }
-  if (z == "vol") {
-    TurnoVol[turnoUtilizado - 1] = TurnoVol[turnoUtilizado - 1] - +AcumulacionNecesaria.innerText - +Mantenimiento.innerText
-  }}
-  else{
-  //que desencadene error
-  console.log('viste, no cuidas el ki acumulado y ahora no tenes con que zarparle al tipo')
-  }
-
-  console.log(TurnoDes)
 }
 
-function Mantener(cantidadCreada) {
-//llamo dos variables, de la tabla seleccionada que gestiona la habilidad
-let agiC = document.getElementById('agiC'+cantidadCreada);
-let agiA = document.getElementById('agiA'+cantidadCreada);
+function EfectoActivar(cantidadCreada, z, t) {
+  for(let i=1 ; i<=cantidadCreada ; i++){
+    if(checkActivar[i] == true){
+    let AcumulacionNecesaria = document.getElementById(z + 'C' + i);
+    let AcumulacionTabla = document.getElementById(z + "T");
+      if (AcumulacionTabla.innerText - +AcumulacionNecesaria.innerText >= 0) {
+        Tipo1(t, AcumulacionNecesaria, AcumulacionTabla, i)
+      }
+      else {
+        //que desencadene error
+        console.log('viste, no cuidas el ki acumulado y ahora no tenes con que zarparle al tipo')
+      }
+    checkActivar[i] = !checkActivar[i]
+    }
+  }
+}
 
-let conC = document.getElementById('conC'+cantidadCreada);
-let conA = document.getElementById('conA'+cantidadCreada);
-
-let desC = document.getElementById('desC'+cantidadCreada);
-let desA = document.getElementById('desA'+cantidadCreada);
-
-let fueC = document.getElementById('fueC'+cantidadCreada);
-let fueA = document.getElementById('fueA'+cantidadCreada);
-
-let podC = document.getElementById('podC'+cantidadCreada);
-let podA = document.getElementById('podA'+cantidadCreada);
-
-let volC = document.getElementById('volC'+cantidadCreada);
-let volA = document.getElementById('volA'+cantidadCreada);
-
+function Tipo1(t, AcumulacionNecesaria, AcumulacionTabla, i) {
+  let totalKi = document.querySelector("#KiUtilizado")
+  AcumulacionTabla.innerText = AcumulacionTabla.innerText - +AcumulacionNecesaria.innerText
+  totalKi.innerHTML = +totalKi.innerHTML + +AcumulacionNecesaria.innerText
+  Guardado (t, AcumulacionNecesaria)
 }

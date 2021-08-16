@@ -5,22 +5,52 @@ var TurnoDes = Array(100).fill(0);
 var TurnoFue = Array(100).fill(0);
 var TurnoPod = Array(100).fill(0);
 var TurnoVol = Array(100).fill(0);
-
+var KiUtilizado = Array(100).fill(0);
 
 
 function sumarTurno(n) {
-  let KiReservaT= document.getElementById('TOTALKI');
-  let KiReservaU= document.getElementById('KiUtilizado');
+  let KiReservaT = document.getElementById('TOTALKI');
   let t = document.getElementById("turno");
+  let agiT = document.getElementById("agiT");
+  let conT = document.getElementById("conT");
+  let desT = document.getElementById("desT");
+  let fueT = document.getElementById("fueT");
+  let podT = document.getElementById("podT");
+  let volT = document.getElementById("volT");
+  Guardado (t)
   t.innerText = +t.innerText * Math.abs(n) + n;
-  if (KiReservaU.innerText==KiReservaT.innerText){
-    t.innerText = +t.innerText * Math.abs(n) - n;
+  if (t.innerText < 0) t.innerText = 0;
+  if (n > 0){
+  nombrar(n);
+  KiTotal();
+  MantenerCuentas ("agi",t,n);
+  MantenerCuentas ("con",t,n);
+  MantenerCuentas ("des",t,n);
+  MantenerCuentas ("fue",t,n);
+  MantenerCuentas ("pod",t,n);
+  MantenerCuentas ("vol",t,n);
+  EfectoActivar(cantidadCreada, "agi", t);
+  EfectoActivar(cantidadCreada, "con", t);
+  EfectoActivar(cantidadCreada, "des", t);
+  EfectoActivar(cantidadCreada, "fue", t);
+  EfectoActivar(cantidadCreada, "pod", t);
+  EfectoActivar(cantidadCreada, "vol", t);
+  SumaTMantener (n,cantidadCreada);
   }
-  else{
-    if (t.innerText < 0) t.innerText = 0;
+  if (n < 0){
+    SumaTMantener (n)
+    Reverse(t)
     nombrar(n);
     KiTotal();
-    Reverse(n)
+  }
+  if (KiReservaT.innerText < +agiT.innerText + +conT.innerText + +desT.innerText + +fueT.innerText + +podT.innerText + +volT.innerText) {
+    //Agregar avizo de error
+    t.innerText = +t.innerText -1;
+    Reverse(t)
+    if (n < 1) {
+      t.innerText = +t.innerText * Math.abs(n) + n;
+      Reverse(t)
+      }
   }
 }
 
@@ -32,100 +62,113 @@ function nombrar(n) {
   if (pod) total("pod", n);
   if (vol) total("vol", n);
 }
-
 function total(v, n) {
-  let T = document.getElementById("turno");
+  let t = document.getElementById("turno");
   let mult = document.getElementById(v + "Acc").value;
   let TotalKiAtributo = document.getElementById(v + "T");
-
-  if (Activa == false) {
-    if (n > 0) {
-      TotalKiAtributo.innerText = +TotalKiAtributo.innerText + mult * n
-      if (v == "agi") {
-        TurnoAgi[T.innerText - 1] = mult
-      }
-      if (v == "con") {
-        TurnoCon[T.innerText - 1] = mult
-      }
-      if (v == "des") {
-        TurnoDes[T.innerText - 1] = mult
-      }
-      if (v == "fue") {
-        TurnoFue[T.innerText - 1] = mult
-      }
-      if (v == "pod") {
-        TurnoPod[T.innerText - 1] = mult
-      }
-      if (v == "vol") {
-        TurnoVol[T.innerText - 1] = mult
-      }
-    }
+  if(n>0){
+    if(Activa == false) {//considerar cambiar nombre Activa por AcumulacionPlena o algo así
+    TotalKiAtributo.innerText = +TotalKiAtributo.innerText + mult * n
+    Guardado (t,v)
 
   }
   if (Activa == true) {
-    if (n > 0) {
-      TotalKiAtributo.innerText = +TotalKiAtributo.innerText + Math.ceil((mult * n) / 2)
-      if (v == "agi") {
-        TurnoAgi[T.innerText - 1] = Math.ceil((mult * n) / 2)
-        console.log(TurnoAgi)
-      }
-      if (v == "con") {
-        TurnoCon[T.innerText - 1] = Math.ceil((mult * n) / 2)
-        console.log(TurnoCon)
-      }
-      if (v == "des") {
-        TurnoDes[T.innerText - 1] = Math.ceil((mult * n) / 2)
-      }
-      if (v == "fue") {
-        TurnoFue[T.innerText - 1] = Math.ceil((mult * n) / 2)
-      }
-      if (v == "pod") {
-        TurnoPod[T.innerText - 1] = Math.ceil((mult * n) / 2)
-      }
-      if (v == "vol") {
-        TurnoVol[T.innerText - 1] = Math.ceil((mult * n) / 2)
-      }
-    }
+    Guardado (t,v)
   }
-
-
-  KiUtilizado ()
-
+}
 }
 
 
-function Reverse(n) {
-  if (n < 0) {
-    let T = document.getElementById("turno");
+function Reverse(t) {
+  let totalA = document.getElementById("agiT");
+  let totalC = document.getElementById("conT");
+  let totalD = document.getElementById("desT");
+  let totalF = document.getElementById("fueT");
+  let totalP = document.getElementById("podT");
+  let totalV = document.getElementById("volT");
+  let totalKi = document.getElementById("KiUtilizado")
+    totalA.innerText = TurnoAgi[t.innerText]
 
-    let totalA = document.getElementById("agiT");
-    let totalC = document.getElementById("conT");
-    let totalD = document.getElementById("desT");
-    let totalF = document.getElementById("fueT");
-    let totalP = document.getElementById("podT");
-    let totalV = document.getElementById("volT");
+    totalC.innerText = TurnoCon[t.innerText]
 
+    totalD.innerText = TurnoDes[t.innerText]
 
-    totalA.innerText = +totalA.innerText + TurnoAgi[T.innerText] * n
+    totalF.innerText = TurnoFue[t.innerText]
 
-    totalC.innerText = +totalC.innerText + TurnoCon[T.innerText] * n
+    totalP.innerText = TurnoPod[t.innerText]
 
-    totalD.innerText = +totalD.innerText + TurnoDes[T.innerText] * n
+    totalV.innerText = TurnoVol[t.innerText]
 
-    totalF.innerText = +totalF.innerText + TurnoFue[T.innerText] * n
+    totalKi.innerText = KiUtilizado[t.innerText]
 
-    totalP.innerText = +totalP.innerText + TurnoPod[T.innerText] * n
-
-    totalV.innerText = +totalV.innerText + TurnoVol[T.innerText] * n
     if (totalA.innerText < 0) totalA.innerText = 0;
     if (totalC.innerText < 0) totalC.innerText = 0;
     if (totalD.innerText < 0) totalD.innerText = 0;
     if (totalF.innerText < 0) totalF.innerText = 0;
     if (totalP.innerText < 0) totalP.innerText = 0;
     if (totalV.innerText < 0) totalV.innerText = 0;
-  }
-  KiUtilizado ()
+    let TMantenimiento = document.getElementById("TurnoHab" + cantidadCreada)
+    if(TMantenimiento != null){
+      for(let i=1 ; i<=cantidadCreada ; i++){
+        console.log("entra",checkMantenimiento,i)
+        let TMantenimiento = document.getElementById("TurnoHab" + i)
+        if(checkMantenimiento[i] == true){
+        TMantenimiento.innerText = 0;
+        console.log("sñlqfjrnwvibreivwuefhwrekuignfw")
+        }
+      }
+    }
+    checkMantenimiento=false
+}
+
+function Reserva0() {
+  let agiT = document.getElementById("agiT");
+  let conT = document.getElementById("conT");
+  let desT = document.getElementById("desT");
+  let fueT = document.getElementById("fueT");
+  let podT = document.getElementById("podT");
+  let volT = document.getElementById("volT");
+  agiT.innerText = 0
+  conT.innerText = 0
+  desT.innerText = 0
+  fueT.innerText = 0
+  podT.innerText = 0
+  volT.innerText = 0
 }
 
 
+// para borrar todo
+function Delet() {
+  let t = document.getElementById("turno")
+  let KiRestante = document.getElementById()
 
+  Reserva0()
+}
+
+function Guardado (t, Mantenimiento, AcumulacionNecesaria, i) {
+  let TotalKiAgi = document.getElementById("agiT");
+  let TotalKiCon = document.getElementById("conT");
+  let TotalKiDes = document.getElementById("desT");
+  let TotalKiFue = document.getElementById("fueT");
+  let TotalKiPod = document.getElementById("podT");
+  let TotalKiVol = document.getElementById("volT");
+
+
+  TurnoAgi[t.innerText] = TotalKiAgi.innerText
+
+  TurnoCon[t.innerText] = TotalKiCon.innerText
+
+  TurnoDes[t.innerText] = TotalKiDes.innerText
+
+  TurnoFue[t.innerText] = TotalKiFue.innerText
+
+  TurnoPod[t.innerText] = TotalKiPod.innerText
+
+  TurnoVol[t.innerText] = TotalKiVol.innerText
+  //guardar en arreglo
+  KiUtilizado[+t.innerText + 1] = +KiUtilizado[t.innerText]
+  //console.log(KiUtilizado , t)
+  if(checkMantenimiento[i] == true) KiUtilizado[t.innerText] = KiUtilizado[t.innerText] + +Mantenimiento.innerText;
+  if(checkActivar[i] == true ) KiUtilizado[t.innerText] = KiUtilizado[t.innerText] + +AcumulacionNecesaria.innerText;
+  //console.log(KiUtilizado)
+}

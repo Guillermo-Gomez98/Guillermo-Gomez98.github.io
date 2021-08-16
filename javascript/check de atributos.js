@@ -15,4 +15,20 @@ function check(x) {
   if (x == "vol") vol = !vol;
   if (x == "Imp") IMP = !IMP;
 }
-//nombrar(n,v)
+
+
+//check boton mantener de las habilidades
+var checkMantenimiento = Array(20).fill(false)
+function Mantener(NumeroDeHabilidad) {
+  let TMantenimiento = document.getElementById("TurnoHab" + NumeroDeHabilidad)
+  checkMantenimiento[NumeroDeHabilidad] = !checkMantenimiento[NumeroDeHabilidad]
+  if(TMantenimiento.innerText==0){
+    Activar(NumeroDeHabilidad)
+  }
+}
+
+var checkActivar = Array (20).fill(false)
+function Activar(NumeroDeHabilidad) {
+  checkActivar[NumeroDeHabilidad] = !checkActivar[NumeroDeHabilidad]
+}
+

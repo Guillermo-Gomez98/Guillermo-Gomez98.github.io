@@ -21,17 +21,3 @@ function KiTotal() {
 
   totalki.innerText = +agiki + +conki + +deski + +fueki + +podki + +volki;
 }
-
-function KiUtilizado (){
-
-  let agiT = document.getElementById("agiT");
-  let conT = document.getElementById("conT");
-  let desT = document.getElementById("desT");
-  let fueT = document.getElementById("fueT");
-  let podT = document.getElementById("podT");
-  let volT = document.getElementById("volT");
-  let Utilizado = document.getElementById("KiUtilizado");
-  
-  Utilizado.innerText= +agiT.innerText + +conT.innerText + +desT.innerText + +fueT.innerText + +podT.innerText + +volT.innerText
-
-}
