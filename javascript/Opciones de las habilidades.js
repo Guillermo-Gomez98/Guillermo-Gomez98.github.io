@@ -70,7 +70,6 @@ function EfectoActivar(cantidadCreada, z, t) {
         //que desencadene error
         console.log('viste, no cuidas el ki acumulado y ahora no tenes con que zarparle al tipo')
       }
-    checkActivar[i] = !checkActivar[i]
     }
   }
 }

@@ -36,6 +36,9 @@ function sumarTurno(n) {
   EfectoActivar(cantidadCreada, "pod", t);
   EfectoActivar(cantidadCreada, "vol", t);
   SumaTMantener (n,cantidadCreada);
+  for(let i=1 ; i<=cantidadCreada ; i++){
+    if(checkActivar[i]==true)  checkActivar[i] = !checkActivar[i];
+  }
   }
   if (n < 0){
     SumaTMantener (n)
