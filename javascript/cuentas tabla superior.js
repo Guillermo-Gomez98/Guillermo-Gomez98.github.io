@@ -6,7 +6,7 @@ var TurnoFue = Array(100).fill(0);
 var TurnoPod = Array(100).fill(0);
 var TurnoVol = Array(100).fill(0);
 var KiUtilizado = Array(100).fill(0);
-
+var Nombrar = ["agi","con","des","fue","pod","vol"]
 
 function sumarTurno(n) {
   let KiReservaT = document.getElementById('TOTALKI');
@@ -21,7 +21,7 @@ function sumarTurno(n) {
   t.innerText = +t.innerText * Math.abs(n) + n;
   if (t.innerText < 0) t.innerText = 0;
   if (n > 0){
-  nombrar(n);
+  PrefijoDeVariable(n);
   KiTotal();
   MantenerCuentas ("agi",t,n);
   MantenerCuentas ("con",t,n);
@@ -43,11 +43,11 @@ function sumarTurno(n) {
   if (n < 0){
     SumaTMantener (n)
     Reverse(t)
-    nombrar(n);
+    PrefijoDeVariable(n);
     KiTotal();
   }
   if (KiReservaT.innerText < +agiT.innerText + +conT.innerText + +desT.innerText + +fueT.innerText + +podT.innerText + +volT.innerText) {
-    //Agregar avizo de error
+    //Agregar avizo de error 1 "Exedo de ki en reserva: expulsa ki o usa alguna de las avilidades"
     t.innerText = +t.innerText -1;
     Reverse(t)
     if (n < 1) {
@@ -57,7 +57,7 @@ function sumarTurno(n) {
   }
 }
 
-function nombrar(n) {
+function PrefijoDeVariable(n) {
   if (agi) total("agi", n);
   if (con) total("con", n);
   if (des) total("des", n);
@@ -70,13 +70,18 @@ function total(v, n) {
   let mult = document.getElementById(v + "Acc").value;
   let TotalKiAtributo = document.getElementById(v + "T");
   if(n>0){
-    if(Activa == false) {//considerar cambiar nombre Activa por AcumulacionPlena o algo así
+    if(Activa == false) {
     TotalKiAtributo.innerText = +TotalKiAtributo.innerText + mult * n
     Guardado (t,v)
 
   }
+  //Funcion que al realizar una accion, el personaje acumalara la mitad de ki.
   if (Activa == true) {
+    if(mult==1){TotalKiAtributo.innerText = +TotalKiAtributo.innerText + mult * n}
+    else{
+    TotalKiAtributo.innerText = +TotalKiAtributo.innerText + Math.trunc(( mult * n)/2)
     Guardado (t,v)
+    }
   }
 }
 }

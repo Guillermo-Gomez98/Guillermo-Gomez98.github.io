@@ -33,7 +33,7 @@ function crear() {
     <div class="">
       <div class="form-inline ml-3">
         <h2>Nombre:  </h2>
-        <p class'${nombre}'>${nombre}</p>
+        <p class'${nombre}' id="${cantidadCreada}Nombre">${nombre}</p>
       </div>
       <div id'togle-button'>
         <a class='iconRed mr'>
