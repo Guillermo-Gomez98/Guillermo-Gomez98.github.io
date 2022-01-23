@@ -25,11 +25,11 @@ function crear() {
   if (nombre === "") {
     nombre = "Ponele nombre gil";
   }
-  if (descripcion === "") {
+  if (descripcion == "") {
     descripcion = "-";
   }
   let tecnicas = `
-  <div class='habilidad  fondo'  id= "habilidad${cantidadCreada}" >
+  <div class='habilidad  fondo '  id= "habilidad${cantidadCreada}" >
     <div class="">
       <div class="form-inline ml-3">
         <h2>Nombre:  </h2>
@@ -42,7 +42,7 @@ function crear() {
           <div class'togle-btn'>
             <div class="form-inline">
               <h4>Descripcion: </h4>
-              <p>${descripcion.value}</p>
+              <p>${descripcion}</p>
             </div>
             <div class="table2 table ml-4">
               <div class='row tablita'>
