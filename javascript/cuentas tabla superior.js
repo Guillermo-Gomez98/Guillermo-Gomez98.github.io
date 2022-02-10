@@ -77,11 +77,8 @@ function total(v, n) {
   }
   //Funcion que al realizar una accion, el personaje acumalara la mitad de ki.
   if (Activa == true) {
-    if(mult==1){TotalKiAtributo.innerText = +TotalKiAtributo.innerText + mult * n}
-    else{
-    TotalKiAtributo.innerText = +TotalKiAtributo.innerText + Math.trunc(( mult * n)/2)
+    TotalKiAtributo.innerText = +TotalKiAtributo.innerText + Math.ceil(( mult * n)/2)
     Guardado (t,v)
-    }
   }
 }
 }

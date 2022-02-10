@@ -29,68 +29,73 @@ function crear() {
     descripcion = "-";
   }
   let tecnicas = `
-  <div class='habilidad  fondo '  id= "habilidad${cantidadCreada}" >
-    <div class="">
-      <div class="form-inline ml-3">
-        <h2>Nombre:  </h2>
-        <p class'${nombre}' id="${cantidadCreada}Nombre">${nombre}</p>
-      </div>
-      <div id'togle-button'>
-        <a class='iconRed mr'>
-          <i class="fas fa-angle-down icon right"></i>
-        </a>
-          <div class'togle-btn'>
-            <div class="form-inline">
-              <h4>Descripcion: </h4>
-              <p>${descripcion}</p>
+  <div class='padd'>
+    <div class='habilidad  fondo  PadInf'  id= "habilidad${cantidadCreada}" >
+        <div class='maquetaSup'>
+          <div class='maquetaInf'>
+        <div class="">
+          <div class="form-inline ml-5">
+            <h2>Nombre:  </h2>
+            <p class'${nombre}' id="${cantidadCreada}Nombre">${nombre}</p>
+          </div>
+          <div id'togle-button'>
+            <a class='iconRed mr'>
+              <i class="fas fa-angle-down icon right"></i>
+            </a>
+              <div class'togle-btn'>
+                <div class="form-inline">
+                  <h4>Descripcion: </h4>
+                  <p>${descripcion}</p>
+                </div>
+                <div class="table2 table ml-4">
+                  <div class='row tablita'>
+                    <div class='col ml-3'></div>
+                    <div class='col'>Ki</div>
+                    <div class='col'>Mant.</div>
+                  </div>
+                  <div class='row deg1'>
+                    <div class='col'>AGI.</div>
+                    <div class='col' id='agiC${cantidadCreada}'>${agiC}</div>
+                    <div class='col' id='agiA${cantidadCreada}'>${agiA}</div>
+                  </div>
+                  <div class='row deg2'>
+                    <div class='col'>CON.</div>
+                    <div class='col' id='conC${cantidadCreada}'>${conC}</div>
+                    <div class='col' id='conA${cantidadCreada}'>${conA}</div>
+                  </div>
+                  <div class='row deg1'>
+                    <div class='col'>DES.</div>
+                    <div class='col' id='desC${cantidadCreada}'>${desC}</div>
+                    <div class='col' id='desA${cantidadCreada}'>${desA}</div>
+                  </div >
+                  <div class='row deg2'>
+                    <div class='col'>FUE.</div>
+                    <div class='col' id='fueC${cantidadCreada}'>${fueC}</div>
+                    <div class='col' id='fueA${cantidadCreada}'>${fueA}</div>
+                  </div>
+                  <div class='row deg1'>
+                    <div class='col '>POD.</div>
+                    <div class='col' id='podC${cantidadCreada}'>${podC}</div>
+                    <div class='col' id='podA${cantidadCreada}'>${podA}</div>
+                  </div>
+                  <div class='row deg2'>
+                    <div class='col'>VOL.</div>
+                    <div class='col' id='volC${cantidadCreada}'>${volC}</div>
+                    <div class='col' id='volA${cantidadCreada}'>${volA}</div>
+                  </div>
+                  <div class='row deg3'>
+                    <div class='col'>Turno</div>
+                    <div class='col ' id='TurnoHab${cantidadCreada}'>0</div>
+                  </div>
+                </div>
             </div>
-            <div class="table2 table ml-4">
-              <div class='row tablita'>
-                <div class='col ml-3'></div>
-                <div class='col'>Ki</div>
-                <div class='col'>Mant.</div>
-              </div>
-              <div class='row deg1'>
-                <div class='col'>AGI.</div>
-                <div class='col' id='agiC${cantidadCreada}'>${agiC}</div>
-                <div class='col' id='agiA${cantidadCreada}'>${agiA}</div>
-              </div>
-              <div class='row deg2'>
-                <div class='col'>CON.</div>
-                <div class='col' id='conC${cantidadCreada}'>${conC}</div>
-                <div class='col' id='conA${cantidadCreada}'>${conA}</div>
-              </div>
-              <div class='row deg1'>
-                <div class='col'>DES.</div>
-                <div class='col' id='desC${cantidadCreada}'>${desC}</div>
-                <div class='col' id='desA${cantidadCreada}'>${desA}</div>
-              </div >
-              <div class='row deg2'>
-                <div class='col'>FUE.</div>
-                <div class='col' id='fueC${cantidadCreada}'>${fueC}</div>
-                <div class='col' id='fueA${cantidadCreada}'>${fueA}</div>
-              </div>
-              <div class='row deg1'>
-                <div class='col '>POD.</div>
-                <div class='col' id='podC${cantidadCreada}'>${podC}</div>
-                <div class='col' id='podA${cantidadCreada}'>${podA}</div>
-              </div>
-              <div class='row deg2'>
-                <div class='col'>VOL.</div>
-                <div class='col' id='volC${cantidadCreada}'>${volC}</div>
-                <div class='col' id='volA${cantidadCreada}'>${volA}</div>
-              </div>
-              <div class='row deg3'>
-                <div class='col'>Turno</div>
-                <div class='col ' id='TurnoHab${cantidadCreada}'>0</div>
-              </div>
+          </div>
+          <div class='row ml-0'>
+            <a onclick="Activar(${NumeroDeHabilidad})"class="action sel ml-2 mt-2 padd margin" > Activar </a>
+            <a onclick="Mantener(${NumeroDeHabilidad})" class="action sel ml-2 mt-2 padd margin" > Mantener </a>
+            <a onclick="eliminar(${NumeroDeHabilidad})" class=" danger sel ml-2 mt-2 padd margin"> Eliminar </a>
             </div>
-        </div>
-      </div>
-      <div class='row ml-0'>
-        <a onclick="Activar(${NumeroDeHabilidad})"class="action sel ml-2 mt-2" > Activar </a>
-        <a onclick="Mantener(${NumeroDeHabilidad})" class="action sel ml-2 mt-2" > Mantener </a>
-        <a onclick="eliminar(${NumeroDeHabilidad})" class=" danger sel ml-2 mt-2 "> Eliminar </a>
+          </div>
         </div>
       </div>
     </div>
@@ -110,3 +115,24 @@ function crear() {
   console.log(descripcion,nombre);
 }*/
 // <a onclick="Mantener(${cantidadCreada})" class=" action sel ml-2 mt-2"> Mantener </a>
+
+/* variacion sistema de experiencia 
+var exp = 100
+var expT= 100
+for (var S=2 ; S<=15 ;S++){
+console.log("Experienciaa nivel",S,"Experiencia necesaria",exp,"ExpTotal",expT)
+exp = +exp + 25
+expT = expT +exp
+}
+
+var expT=100
+var exp =100
+
+console.log("variacion propia")
+
+for (var S=2 ; S<=15 ;S++){
+console.log("Experiencia a nivel",S,"Experiencia necesaria",exp,"ExpT",expT)
+exp = +exp + 50
+expT = expT +exp
+}
+*/

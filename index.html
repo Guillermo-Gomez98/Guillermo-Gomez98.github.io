@@ -41,7 +41,6 @@
           <input id="agiKI" class="sinborde trans" type="number" value="5" step="1" min="1" size="2" />
         </td>
         <td>
-          <span>x</span>
           <input id="agiAcc" class="sinborde trans" type="number" value="1" step="1" min="1" />
         </td>
         <td id="agiT">0</td>
@@ -59,7 +58,6 @@
             <input id="conKI" class="sinborde trans" type="number" value="5" step="1" min="1" />
           </td>
           <td>
-            <span>x</span>
             <input id="conAcc" class="sinborde trans" type="number" value="1" step="1" min="1" />
           </td>
           <td id="conT">0</td>
@@ -77,7 +75,6 @@
           <input id="desKI" class="sinborde trans" type="number" value="5" step="1" min="1" />
         </td>
         <td>
-          <span>x</span>
           <input id="desAcc" class="sinborde trans" type="number" value="1" step="1" min="1" />
         </td>
         <td id="desT">0</td>
@@ -94,7 +91,6 @@
           <input id="fueKI" class="sinborde trans" type="number" value="5" step="1" min="1" />
         </td>
         <td>
-          <span>x</span>
           <input id="fueAcc" class="sinborde trans" type="number" value="1" step="1" min="1" size="15" maxlength="30" />
         </td>
         <td id="fueT">0</td>
@@ -111,7 +107,6 @@
           <input id="podKI" class="sinborde trans" type="number" value="5" step="1" min="1" />
         </td>
         <td>
-          <span>x</span>
           <input id="podAcc" class="sinborde trans" type="number" value="1" step="1" min="1" />
         </td>
         <td id="podT">0</td>
@@ -128,7 +123,6 @@
           <input id="volKI" class="sinborde trans" type="number" value="5" step="1" min="1" />
         </td>
         <td>
-          <span>x</span>
           <input id="volAcc" class="sinborde trans" type="number" value="1" step="1" min="1" />
         </td>
         <td id="volT">0</td>
@@ -161,12 +155,15 @@
           </a>
           </col>
       <col>
-      <a type="checkbox" onclick="AccionActiva()" class="active ml-2" id="AccionActiva"*> Accion activa </a>
+      <a type="button" onclick="Reserva0()" class="text-info ml-4">
+        <i class="fas fa-recycle"></i>
+      </a>
+      
       </col>
-      <col class="col-10 align">
-<a type="button" onclick="Reserva0()" class="text-info ml-4">
-  <i class="fas fa-recycle"></i>
-</a>
+      <col class=" align">
+
+      <a type="checkbox" onclick="AccionActiva()" class="active ml-2" id="AccionActiva"*> Accion activa </a>
+
 </col>
         </row>
       </col>
@@ -176,7 +173,7 @@
   <div class="row pl-3 pr-3">
     <!--lista con hab.-->
     <div class="col">
-      <div class="title e1">
+      <div class="title">
         <h1 class="form-inline">
           habilidades
           <div class="col">
@@ -281,11 +278,12 @@
             </div>
         </h1>
       </div>
-      <div class="scroll">
+      <div class="scroll InterfasInferior">
+      <div class= 'margenes'>
         <div id=list>
-
         </div>
       </div>
+    </div>
     </div>
     <!--columna derecha (rigth column)-->
   </div>
